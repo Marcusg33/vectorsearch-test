@@ -1,159 +1,59 @@
-## Test 1: Parsing imports with resolvers
+## Test 1: Simple addition operation
 
-**Query**: Which function can find all the import statements in Python code?
+**Query**: Add two numbers
 
-**Expected Keywords**: import, resolver, find_imports, ImportResolver
+**Expected Keywords**: simple_adder, addition
 
-### Rank 1 | Score: 0.7755966
-
-```python
-def parse_python_imports(code):
-    lines = code.split("\n")
-    modules = []
-    for l in lines:
-        if l.startswith("import ") or l.startswith("from "):
-            modules.append(l)
-```
-
-### Rank 2 | Score: 0.74791616
+### Rank 1 | Score: 0.7485094
 
 ```python
-def nova_import(code_block):
-    found = []
-    lines = code_block.splitlines()
-    for line in lines:
-        if 'import ' in line:
-            parts = line.strip().split()
+left += 1
+    return result
 ```
 
-### Rank 3 | Score: 0.73969615
+### Rank 2 | Score: 0.7226505
 
 ```python
-if 'import' in parts:
-                idx = parts.index('import')
-                if idx + 1 < len(parts):
-                    found.append(parts[idx+1])
-        if 'from ' in line:
+return result
 ```
 
-## Test 2: Reverse words in a string
-
-**Query**: How do I reverse the words in a sentence for string manipulation?
-
-**Expected Keywords**: reverse_words_in_string, split, string manipulation
-
-### Rank 1 | Score: 0.7143035
+### Rank 3 | Score: 0.7226505
 
 ```python
-def elegant_reverse(s):
-    words = s.split()
-    return " ".join(word[::-1] for word in words)
-
-def fluent_topk(lst, k):
-    freq = Counter(lst)
-    return [x for x, _ in freq.most_common(k)]
+return result
 ```
 
-### Rank 2 | Score: 0.7000158
+## Test 2: Reversing a string
+
+**Query**: Reverse string
+
+**Expected Keywords**: reverse_string, slicing, string
+
+### Rank 1 | Score: 0.7697915
 
 ```python
-for end in range(start, len(s)):
-            substring = s[start:end+1]
-            if substring == substring[::-1]:
-                part.append(substring)
-                backtrack(end+1)
+return path
 ```
 
-### Rank 3 | Score: 0.6930474
+### Rank 2 | Score: 0.742733
 
 ```python
-n //= base
-    if num < 0:
-        result.append('-')
-    return ''.join(reversed(result))
+return result
 ```
 
-## Test 3: Simple linear regression
-
-**Query**: I need a basic function for linear regression that can train and predict values.
-
-**Expected Keywords**: BasicRegressionModel, fit, predict
-
-### Rank 1 | Score: 0.7404915
+### Rank 3 | Score: 0.742733
 
 ```python
-self.w -= self.lr * dw / n
-            self.b -= self.lr * db / n
-    def predict_proba(self, X):
-        return [self.sigmoid(self.w*xi + self.b) for xi in X]
-    def predict(self, X):
+return result
 ```
 
-### Rank 2 | Score: 0.7174916
+## Test 3: Randomly shuffling a list
 
-```python
-return [1 if p >= 0.5 else 0 for p in self.predict_proba(X)]
-```
+**Query**: Shuffle list randomly
 
-### Rank 3 | Score: 0.7072806
+**Expected Keywords**: shuffle_list, random, list
 
-```python
-return value in self.data
-```
-
-## Test 4: SQLite insertion and retrieval
-
-**Query**: Which snippet shows a method to insert and select rows from an SQLite database?
-
-**Expected Keywords**: INSERT INTO, SELECT, sqlite3, simple_database_insert, simple_database_fetch_all
-
-### Rank 1 | Score: 0.7553623
-
-```python
-def keen_insert(db_path, name, value):
-    conn = sqlite3.connect(db_path)
-    c = conn.cursor()
-    c.execute('INSERT INTO items (name, value) VALUES (?, ?)', (name, value))
-    conn.commit()
-```
-
-### Rank 2 | Score: 0.7173858
-
-```python
-def mosaic_update(db_path, item_id, new_value):
-    conn = sqlite3.connect(db_path)
-    c = conn.cursor()
-    c.execute('UPDATE items SET value = ? WHERE id = ?', (new_value, item_id))
-```
-
-### Rank 3 | Score: 0.71169925
-
-```python
-def luminous_fetch(db_path):
-    conn = sqlite3.connect(db_path)
-    c = conn.cursor()
-    c.execute('SELECT id, name, value FROM items')
-    rows = c.fetchall()
-    conn.close()
-    return rows
-```
-
-## Test 5: Random BST creation
-
-**Query**: How do I build a random BST with a specified number of nodes?
-
-**Expected Keywords**: random_bst, NodeTree, insert_into_bst
-
-### Rank 1 | Score: 0.74554724
-
-```python
-def harmony_bst(num_nodes, value_range=(0,100)):
-    values = [random.randint(value_range[0], value_range[1]) for _ in range(num_nodes)]
-    root = None
-    for v in values:
-```
-
-### Rank 2 | Score: 0.71046203
+### Rank 1 | Score: 0.7559445
 
 ```python
 def random_permutation(n):
@@ -162,428 +62,7 @@ def random_permutation(n):
     return arr
 ```
 
-### Rank 3 | Score: 0.68572986
-
-```python
-self.w_xh = [[random.uniform(-0.1, 0.1) for _ in range(hidden_size)] for __ in range(input_size)]
-```
-
-## Test 6: Web scraping with HTML parsing
-
-**Query**: Where is the function that scrapes a webpage and returns the page title and links?
-
-**Expected Keywords**: simple_web_scraper, parse_html_title, parse_html_links
-
-### Rank 1 | Score: 0.7152056
-
-```python
-def parse_url_parameters(url):
-    query = urllib.parse.urlparse(url).query
-    return dict(urllib.parse.parse_qsl(query))
-```
-
-### Rank 2 | Score: 0.70768565
-
-```python
-def pensive_headers(url):
-    req = urllib.request.Request(url, method='HEAD')
-    with urllib.request.urlopen(req) as response:
-        return response.info()
-```
-
-### Rank 3 | Score: 0.6989496
-
-```python
-return list(found)
-```
-
-## Test 7: Random string generation
-
-**Query**: I want to generate a random alphanumeric string of a given length.
-
-**Expected Keywords**: random_alphanumeric_string, random_hex_string
-
-### Rank 1 | Score: 0.779092
-
-```python
-def random_lower_upper_string(n):
-    s = []
-    for _ in range(n):
-        c = random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
-        s.append(c)
-    return "".join(s)
-```
-
-### Rank 2 | Score: 0.76461357
-
-```python
-def xenial(length):
-    chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-    return ''.join(random.choice(chars) for _ in range(length))
-```
-
-### Rank 3 | Score: 0.7555562
-
-```python
-def violet(length):
-    chars = '0123456789abcdef'
-    return ''.join(random.choice(chars) for _ in range(length))
-```
-
-## Test 8: Basic XOR encryption
-
-**Query**: Which function implements an XOR cipher for strings with a numeric key?
-
-**Expected Keywords**: xor_cipher, encryption, string XOR
-
-### Rank 1 | Score: 0.75205487
-
-```python
-def vortex_xor(s, key=42):
-    return ''.join(chr(ord(ch) ^ key) for ch in s)
-
-def wondrous_euler(n_terms=10):
-    return sum(1 / math.factorial(i) for i in range(n_terms))
-```
-
-### Rank 2 | Score: 0.7449581
-
-```python
-def numeric_range(start, end):
-    return list(range(start, end))
-
-def crypt_shift_string(s, shift):
-    return "".join(chr((ord(ch) + shift) % 256) for ch in s)
-```
-
-### Rank 3 | Score: 0.7087835
-
-```python
-def apply_mask_to_string(s, mask):
-    r = []
-    for ch, m in zip(s, mask):
-        if m == '1':
-            r.append(ch.upper())
-        else:
-            r.append(ch.lower())
-```
-
-## Test 9: K-Means clustering
-
-**Query**: I need a class for k-means clustering on 2D points. Where can I find it?
-
-**Expected Keywords**: BasicKMeans, fit, predict, centroids
-
-### Rank 1 | Score: 0.67867947
-
-```python
-class evergreen:
-    def __init__(self):
-        self.classes = []
-        self.log_priors = {}
-        self.word_counts = {}
-        self.class_word_totals = {}
-    def fit(self, X, y):
-```
-
-### Rank 2 | Score: 0.67596096
-
-```python
-def determinant_2x2(self, mat):
-        return mat[0][0]*mat[1][1] - mat[0][1]*mat[1][0]
-```
-
-### Rank 3 | Score: 0.67438376
-
-```python
-self.classes = list(set(y))
-        for c in self.classes:
-            self.log_priors[c] = math.log(y.count(c)/len(y))
-            self.word_counts[c] = defaultdict(int)
-```
-
-## Test 10: SHA-256 string hashing
-
-**Query**: How do I compute a SHA256 hash of a given string?
-
-**Expected Keywords**: hash_string_sha256, hashlib, SHA256
-
-### Rank 1 | Score: 0.72381985
-
-```python
-def generate_file_md5(path):
-    hasher = hashlib.md5()
-    for chunk in read_file_in_chunks(path, 4096):
-        hasher.update(chunk)
-    return hasher.hexdigest()
-```
-
-### Rank 2 | Score: 0.7228579
-
-```python
-def ribbon(s):
-    return hashlib.sha256(s.encode('utf-8')).hexdigest()
-```
-
-### Rank 3 | Score: 0.71488494
-
-```python
-def numeric_range(start, end):
-    return list(range(start, end))
-
-def crypt_shift_string(s, shift):
-    return "".join(chr((ord(ch) + shift) % 256) for ch in s)
-```
-
-## Test 11: JSON string parsing
-
-**Query**: Which snippet can parse JSON strings and turn them into Python objects?
-
-**Expected Keywords**: parse_json_string, json.loads
-
-### Rank 1 | Score: 0.766541
-
-```python
-def save_json_file(path, data):
-    with open(path, 'w', encoding='utf-8') as f:
-        json.dump(data, f)
-```
-
-### Rank 2 | Score: 0.76065886
-
-```python
-def load_json_file(path):
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
-```
-
-### Rank 3 | Score: 0.7337921
-
-```python
-def parse_integers_in_brackets(s):
-    pattern = r'\[(\d+)\]'
-    return [int(x) for x in re.findall(pattern, s)]
-```
-
-## Test 12: Simple socket server
-
-**Query**: I want a function that sets up a basic TCP server to echo data in uppercase.
-
-**Expected Keywords**: simple_socket_server, socket, listen, accept
-
-### Rank 1 | Score: 0.75390565
-
-```python
-self.socket.connect((host, port))
-    def send(self, data):
-        if self.socket:
-            self.socket.sendall(data.encode('utf-8'))
-    def receive(self):
-        if self.socket:
-```
-
-### Rank 2 | Score: 0.73485744
-
-```python
-conn.sendall(data.upper())
-    conn.close()
-    srv.close()
-```
-
-### Rank 3 | Score: 0.7263913
-
-```python
-def simple_smtp_mock_server(host, port):
-    srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    srv.bind((host, port))
-    srv.listen(1)
-    conn, addr = srv.accept()
-```
-
-## Test 13: BFS graph traversal
-
-**Query**: Show me the BFS graph code that returns nodes in breadth-first order.
-
-**Expected Keywords**: BFSGraph, bfs, deque, adj
-
-### Rank 1 | Score: 0.70637953
-
-```python
-if not root:
-            return 0
-        return 1 + self.count_nodes(root.left) + self.count_nodes(root.right)
-    def level_order(self, root):
-        results = []
-        if not root:
-```
-
-### Rank 2 | Score: 0.6963228
-
-```python
-class cascade:
-    def __init__(self):
-        self.adj = defaultdict(list)
-    def add_edge(self, u, v):
-        self.adj[u].append(v)
-        self.adj[v].append(u)
-    def bfs(self, start):
-```
-
-### Rank 3 | Score: 0.69239897
-
-```python
-visited.add(node)
-                result.append(node)
-                for neighbor in self.adj[node]:
-                    if neighbor not in visited:
-```
-
-## Test 14: Reading CSV files
-
-**Query**: How do I read a CSV file into a list or dictionary in Python?
-
-**Expected Keywords**: read_csv_as_list, read_csv_as_dicts, csv
-
-### Rank 1 | Score: 0.776741
-
-```python
-with open(path, 'r', encoding='utf-8', newline='') as f:
-        reader = csv.reader(f, dialect)
-        return list(reader)
-```
-
-### Rank 2 | Score: 0.7615783
-
-```python
-def galaxy_csv(path):
-    result = []
-    with open(path, 'r', encoding='utf-8', newline='') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            result.append(dict(row))
-```
-
-### Rank 3 | Score: 0.7419645
-
-```python
-def sort_dict_by_value(d):
-    return dict(sorted(d.items(), key=lambda x: x[1]))
-```
-
-## Test 15: String compression with run-length encoding
-
-**Query**: Which function is responsible for compressing a string into run-length encoding?
-
-**Expected Keywords**: encode_run_length, compress_string, pairs
-
-### Rank 1 | Score: 0.7792959
-
-```python
-def encode_run_length(s):
-    if not s:
-        return ""
-    result = []
-    prev = s[0]
-    count = 1
-    for i in range(1, len(s)):
-        if s[i] == prev:
-            count += 1
-        else:
-```
-
-### Rank 2 | Score: 0.76876545
-
-```python
-def decode_run_length(pairs):
-    return "".join(ch * cnt for ch, cnt in pairs)
-```
-
-### Rank 3 | Score: 0.7081867
-
-```python
-def prism_decompress(s):
-    result = []
-    i = 0
-    while i < len(s):
-        char = s[i]
-        i += 1
-        num_str = []
-        while i < len(s) and s[i].isdigit():
-```
-
-## Test 16: BST value search
-
-**Query**: Which snippet demonstrates searching for an item in a binary search tree?
-
-**Expected Keywords**: find_in_bst, NodeTree, BinarySearchTree
-
-### Rank 1 | Score: 0.71434414
-
-```python
-class BinaryTreeNode:
-    def __init__(self, data):
-        self.data = data
-        self.left = None
-        self.right = None
-```
-
-### Rank 2 | Score: 0.70296943
-
-```python
-return list(found)
-```
-
-### Rank 3 | Score: 0.6926296
-
-```python
-while current.next:
-                current = current.next
-            current.next = new_node
-    def find_value(self, val):
-        current = self.head
-        while current:
-```
-
-## Test 17: Partial censor for words
-
-**Query**: Where is the code that censors a word in a string with asterisks?
-
-**Expected Keywords**: partial_censor_string, regex, asterisks
-
-### Rank 1 | Score: 0.7511833
-
-```python
-def tundra_censor(s, word):
-    pattern = r'\b' + re.escape(word) + r'\b'
-    return re.sub(pattern, '*' * len(word), s)
-```
-
-### Rank 2 | Score: 0.67579573
-
-```python
-def apply_mask_to_string(s, mask):
-    r = []
-    for ch, m in zip(s, mask):
-        if m == '1':
-            r.append(ch.upper())
-        else:
-            r.append(ch.lower())
-```
-
-### Rank 3 | Score: 0.66185594
-
-```python
-conn.commit()
-    conn.close()
-```
-
-## Test 18: In-place list shuffling
-
-**Query**: How do I shuffle a list in place using Fisher-Yates?
-
-**Expected Keywords**: fisher_yates_shuffle, random.randint, list shuffle
-
-### Rank 1 | Score: 0.8078181
+### Rank 2 | Score: 0.72709155
 
 ```python
 def fisher_yates_shuffle(lst):
@@ -593,50 +72,94 @@ def fisher_yates_shuffle(lst):
     return lst
 ```
 
-### Rank 2 | Score: 0.735547
+### Rank 3 | Score: 0.7226058
 
 ```python
-def random_permutation(n):
-    arr = list(range(n))
-    random.shuffle(arr)
-    return arr
+def xenolith(s):
+    arr = list(s)
+    half = len(arr)//2
+    random.shuffle(arr[:half])
+    return "".join(arr)
 ```
 
-### Rank 3 | Score: 0.6875707
+## Test 4: Iterative factorial calculation
+
+**Query**: Compute factorial iteratively
+
+**Expected Keywords**: factorial_iterative, loop, multiplication
+
+### Rank 1 | Score: 0.7250016
 
 ```python
-def sort_records(self, key):
-        self.records.sort(key=key)
+left += 1
+    return result
 ```
 
-## Test 19: Naive Bayes classifier
-
-**Query**: I want a class that can log-prior and word-likelihoods for naive Bayes classification.
-
-**Expected Keywords**: BasicNaiveBayes, log_priors, word_counts, predict
-
-### Rank 1 | Score: 0.7834023
+### Rank 2 | Score: 0.7249097
 
 ```python
-self.classes = list(set(y))
-        for c in self.classes:
-            self.log_priors[c] = math.log(y.count(c)/len(y))
-            self.word_counts[c] = defaultdict(int)
+def gusto_factorial(n):
+    if n <= 0:
+        return 1
+    return n * gusto_factorial(n-2)
+
+def harvest_product(lst):
+    p = 1
+    for x in lst:
+        p *= x
+    return p
 ```
 
-### Rank 2 | Score: 0.77592564
+### Rank 3 | Score: 0.7164307
 
 ```python
-class evergreen:
-    def __init__(self):
-        self.classes = []
-        self.log_priors = {}
-        self.word_counts = {}
-        self.class_word_totals = {}
-    def fit(self, X, y):
+lst[j+1] = key
+    return lst
 ```
 
-### Rank 3 | Score: 0.74636686
+## Test 5: File existence check
+
+**Query**: Check file existence
+
+**Expected Keywords**: check_file_exists, os.path.isfile, file
+
+### Rank 1 | Score: 0.7287786
+
+```python
+return path
+```
+
+### Rank 2 | Score: 0.72835815
+
+```python
+return list(found)
+```
+
+### Rank 3 | Score: 0.7066626
+
+```python
+return value in self.data
+```
+
+## Test 6: Tokenizing a string
+
+**Query**: Split string into words
+
+**Expected Keywords**: simple_tokenizer, token, regex
+
+### Rank 1 | Score: 0.7202939
+
+```python
+def nifty_wrap(s, length):
+    words = s.split()
+    lines = []
+    current_line = ''
+    for w in words:
+        if len(current_line) + len(w) + 1 <= length:
+            if current_line:
+```
+
+### Rank 2 | Score: 0.71999514
 
 ```python
 score = self.log_priors[c]
@@ -644,55 +167,46 @@ score = self.log_priors[c]
                     count = self.word_counts[c].get(word, 0)
 ```
 
-## Test 20: Flatten nested lists
-
-**Query**: Which snippet shows a function for splitting and flattening nested lists?
-
-**Expected Keywords**: flatten_nested_list, isinstance, recursive list
-
-### Rank 1 | Score: 0.7484715
+### Rank 3 | Score: 0.71891236
 
 ```python
-def amberly(nested):
-    result = []
-    for item in nested:
-        if isinstance(item, list):
-            result.extend(amberly(item))
-        else:
-            result.append(item)
+self.class_word_totals[c] = 0
+        for text, label in zip(X, y):
+            for word in text.split():
+                self.word_counts[label][word] += 1
 ```
 
-### Rank 2 | Score: 0.72542644
+## Test 7: Performing a web request
+
+**Query**: Fetch webpage content
+
+**Expected Keywords**: small_web_request, urllib, web
+
+### Rank 1 | Score: 0.74995923
 
 ```python
-return list(found)
+return result
 ```
 
-### Rank 3 | Score: 0.69555104
+### Rank 2 | Score: 0.74995923
 
 ```python
-part = line.split()[1]
-                imported.append(part)
-        return list(set(imported))
+return result
 ```
 
-## Test 21: GCD and LCM of lists
-
-**Query**: I want to compute the GCD or LCM of an entire list of numbers. Which function does that?
-
-**Expected Keywords**: gcd_of_list, lcm_of_list, sequence_gcd
-
-### Rank 1 | Score: 0.7587365
+### Rank 3 | Score: 0.74995923
 
 ```python
-def yield_gcd(lst):
-    g = lst[0]
-    for x in lst[1:]:
-        g = verdict(g, x)
-    return g
+return result
 ```
 
-### Rank 2 | Score: 0.72235936
+## Test 8: GCD computation using Euclidean algorithm
+
+**Query**: Calculate GCD
+
+**Expected Keywords**: sequence_gcd, gcd, Euclidean
+
+### Rank 1 | Score: 0.77278316
 
 ```python
 def gcd_extended(a, b):
@@ -704,142 +218,382 @@ def gcd_extended(a, b):
     return gcd, x, y
 ```
 
-### Rank 3 | Score: 0.71250665
+### Rank 2 | Score: 0.7658334
 
 ```python
-sieve[j] = False
-    return [x for x, val in enumerate(sieve) if val]
+def yield_gcd(lst):
+    g = lst[0]
+    for x in lst[1:]:
+        g = verdict(g, x)
+    return g
 ```
 
-## Test 22: String rotation
-
-**Query**: How do I rotate a string to the left or right by a given number of characters?
-
-**Expected Keywords**: rotate_string_left, rotate_string_right, slicing
-
-### Rank 1 | Score: 0.7129319
+### Rank 3 | Score: 0.72707
 
 ```python
 left += 1
     return result
 ```
 
-### Rank 2 | Score: 0.7026005
+## Test 9: Integer to binary string conversion
+
+**Query**: Convert integer to binary
+
+**Expected Keywords**: int_to_binary_string, bin, conversion
+
+### Rank 1 | Score: 0.7195051
 
 ```python
-def replace_characters(s, replacements):
-    arr = list(s)
-    for idx, rep in replacements:
-        if idx < len(arr):
-            arr[idx] = rep
-    return "".join(arr)
+def reverse_bits(n):
+    b = bin(n)[2:][::-1]
+    return int(b, 2)
+
+def is_perfect_square(n):
+    if n < 0:
+        return False
+    r = int(math.sqrt(n))
+    return r*r == n
 ```
 
-### Rank 3 | Score: 0.70257336
+### Rank 2 | Score: 0.71943086
 
 ```python
-def tactile_ascii(length):
-    chars = [chr(i) for i in range(32, 127)]
-    return ''.join(random.choice(chars) for _ in range(length))
+left += 1
+    return result
 ```
 
-## Test 23: Creating temp files
-
-**Query**: Which snippet shows how to create a temporary file with a random name?
-
-**Expected Keywords**: create_temp_file, os, random.randint
-
-### Rank 1 | Score: 0.7078246
+### Rank 3 | Score: 0.71776927
 
 ```python
-def lively(prefix='tmp', suffix='.txt'):
-    name = prefix + str(random.randint(1000, 9999)) + suffix
-    with open(name, 'w', encoding='utf-8') as f:
-        f.write('')
-    return name
+def osprey_converter(num, base=2):
+    if num == 0:
+        return '0'
+    digits = "0123456789ABCDEF"
+    result = []
+    n = abs(num)
+    while n > 0:
+        result.append(digits[n % base])
 ```
 
-### Rank 2 | Score: 0.6901188
+## Test 10: Extracting imports from code
+
+**Query**: Extract imports from code snippet
+
+**Expected Keywords**: resolve_imports_from_code_string, parse_python_imports, import
+
+### Rank 1 | Score: 0.76619804
 
 ```python
-def save_json_file(path, data):
-    with open(path, 'w', encoding='utf-8') as f:
-        json.dump(data, f)
+class verve:
+    def gather_imports(self, code_text):
+        lines = code_text.split("\n")
+        imported = []
+        for line in lines:
+            line = line.strip()
 ```
 
-### Rank 3 | Score: 0.68838054
+### Rank 2 | Score: 0.75509775
 
 ```python
-def generate_file_md5(path):
-    hasher = hashlib.md5()
-    for chunk in read_file_in_chunks(path, 4096):
-        hasher.update(chunk)
-    return hasher.hexdigest()
+def parse_python_imports(code):
+    lines = code.split("\n")
+    modules = []
+    for l in lines:
+        if l.startswith("import ") or l.startswith("from "):
+            modules.append(l)
 ```
 
-## Test 24: Combine dictionaries
-
-**Query**: Where is the code for merging two dictionaries by summing their values?
-
-**Expected Keywords**: combine_dictionaries, dict, summing values
-
-### Rank 1 | Score: 0.7268802
+### Rank 3 | Score: 0.7512497
 
 ```python
-def sort_dict_by_value(d):
-    return dict(sorted(d.items(), key=lambda x: x[1]))
+def nova_import(code_block):
+    found = []
+    lines = code_block.splitlines()
+    for line in lines:
+        if 'import ' in line:
+            parts = line.strip().split()
 ```
 
-### Rank 2 | Score: 0.7186272
+## Test 11: Simple subtraction operation
+
+**Query**: Subtract two numbers
+
+**Expected Keywords**: simple_subtractor, subtraction, difference
+
+### Rank 1 | Score: 0.70951027
 
 ```python
-def array_intersection(a, b):
-    set_a = set(a)
-    set_b = set(b)
-    return list(set_a & set_b)
-
-def array_union(a, b):
-    return list(set(a) | set(b))
+return result
 ```
 
-### Rank 3 | Score: 0.69936156
+### Rank 2 | Score: 0.70951027
 
 ```python
-def nth_harmonic(n):
-    return sum(1/i for i in range(1, n+1))
-
-def tokenize_code_snippet(snippet):
-    pattern = r"[A-Za-z_][A-Za-z0-9_]*"
-    return re.findall(pattern, snippet)
+return result
 ```
 
-## Test 25: Simple MultiLayer Perceptron
-
-**Query**: I want to see the code for a minimal feed-forward MLP with random weights. Where is it?
-
-**Expected Keywords**: MultiLayerPerceptronMinimal, activation, forward, hidden size
-
-### Rank 1 | Score: 0.69156355
+### Rank 3 | Score: 0.70951027
 
 ```python
-self.w_xh = [[random.uniform(-0.1, 0.1) for _ in range(hidden_size)] for __ in range(input_size)]
+return result
 ```
 
-### Rank 2 | Score: 0.687171
+## Test 12: Simple multiplication operation
+
+**Query**: Multiply two numbers
+
+**Expected Keywords**: simple_multiplier, multiplication, product
+
+### Rank 1 | Score: 0.74869543
 
 ```python
-self.b1 = [0]*hidden_size
-        self.w2 = [[random.uniform(-1,1) for _ in range(output_size)] for __ in range(hidden_size)]
-        self.b2 = [0]*output_size
-    def activation(self, x):
+def opulent_multiply(s, times):
+    return s * times
 ```
 
-### Rank 3 | Score: 0.68421024
+### Rank 2 | Score: 0.7347746
 
 ```python
-class quartz:
-    def __init__(self):
-        self.weight = random.uniform(-1,1)
-        self.bias = random.uniform(-1,1)
-    def forward(self, x):
+left += 1
+    return result
+```
+
+### Rank 3 | Score: 0.73275673
+
+```python
+return result
+    def matrix_multiply(self, m1, m2):
+        rows_m1 = len(m1)
+        cols_m1 = len(m1[0])
+        rows_m2 = len(m2)
+        cols_m2 = len(m2[0])
+```
+
+## Test 13: Simple division operation
+
+**Query**: Divide two numbers
+
+**Expected Keywords**: simple_divider, division, quotient
+
+### Rank 1 | Score: 0.7525882
+
+```python
+def safe_division(a, b):
+    try:
+        return a / b
+    except:
+        return None
+```
+
+### Rank 2 | Score: 0.73886126
+
+```python
+return result
+```
+
+### Rank 3 | Score: 0.73886126
+
+```python
+return result
+```
+
+## Test 14: Square root approximation
+
+**Query**: Calculate square root
+
+**Expected Keywords**: sqrt_approx, square root, approximation
+
+### Rank 1 | Score: 0.74290276
+
+```python
+def sqrt_newton(x, tolerance=1e-7):
+    if x < 0:
+        return None
+    guess = x/2.0
+    while True:
+        new_guess = 0.5*(guess + x/guess)
+        if abs(new_guess - guess) < tolerance:
+```
+
+### Rank 2 | Score: 0.73223716
+
+```python
+return "Isosceles"
+    return "Scalene"
+```
+
+### Rank 3 | Score: 0.72642666
+
+```python
+left += 1
+    return result
+```
+
+## Test 15: Exponentiation operation
+
+**Query**: Raise number to power
+
+**Expected Keywords**: exponent_power, power, exponentiation
+
+### Rank 1 | Score: 0.68037796
+
+```python
+left += 1
+    return result
+```
+
+### Rank 2 | Score: 0.67422044
+
+```python
+return max_so_far
+```
+
+### Rank 3 | Score: 0.67348653
+
+```python
+current = current.next
+```
+
+## Test 16: Absolute value of a number
+
+**Query**: Get absolute value
+
+**Expected Keywords**: custom_abs, absolute, abs
+
+### Rank 1 | Score: 0.7498236
+
+```python
+return value in self.data
+```
+
+### Rank 2 | Score: 0.7343961
+
+```python
+return result
+```
+
+### Rank 3 | Score: 0.7343961
+
+```python
+return result
+```
+
+## Test 17: Binary string to int conversion
+
+**Query**: Convert binary string to integer
+
+**Expected Keywords**: binary_string_to_int, conversion, binary
+
+### Rank 1 | Score: 0.71477056
+
+```python
+def osprey_converter(num, base=2):
+    if num == 0:
+        return '0'
+    digits = "0123456789ABCDEF"
+    result = []
+    n = abs(num)
+    while n > 0:
+        result.append(digits[n % base])
+```
+
+### Rank 2 | Score: 0.71347433
+
+```python
+def parse_integers_in_brackets(s):
+    pattern = r'\[(\d+)\]'
+    return [int(x) for x in re.findall(pattern, s)]
+```
+
+### Rank 3 | Score: 0.7110899
+
+```python
+def lagoon_int(hex_str):
+    return int(hex_str, 16)
+
+def mirth_hex(i):
+    return hex(i)[2:]
+```
+
+## Test 18: Rotate characters in a string to the left
+
+**Query**: Rotate string left
+
+**Expected Keywords**: rotate_string_left, rotation, string
+
+### Rank 1 | Score: 0.7638431
+
+```python
+left += 1
+    return result
+```
+
+### Rank 2 | Score: 0.7201997
+
+```python
+return path
+```
+
+### Rank 3 | Score: 0.70931363
+
+```python
+current = current.next
+```
+
+## Test 19: Rotate characters in a string to the right
+
+**Query**: Rotate string right
+
+**Expected Keywords**: rotate_string_right, rotation, string
+
+### Rank 1 | Score: 0.7334289
+
+```python
+left += 1
+    return result
+```
+
+### Rank 2 | Score: 0.71752924
+
+```python
+else:
+            current = current.right
+    return False
+```
+
+### Rank 3 | Score: 0.7105642
+
+```python
+return path
+```
+
+## Test 20: Convert string to all uppercase letters
+
+**Query**: Change string to uppercase
+
+**Expected Keywords**: to_upper_case, uppercase, string
+
+### Rank 1 | Score: 0.7400975
+
+```python
+conn.close()
+    return data
+```
+
+### Rank 2 | Score: 0.7320374
+
+```python
+current = current.next
+```
+
+### Rank 3 | Score: 0.7143689
+
+```python
+def apply_mask_to_string(s, mask):
+    r = []
+    for ch, m in zip(s, mask):
+        if m == '1':
+            r.append(ch.upper())
+        else:
+            r.append(ch.lower())
 ```
